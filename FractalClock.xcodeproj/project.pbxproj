@@ -14,7 +14,7 @@
 
 /* Begin PBXFileReference section */
 		20CB523685992D3E44CC8AF3 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
-		20CB57DAFC6641B7520BC134 /* FractalClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractalClockView.swift; sourceTree = "<group>"; };
+		20CB57DAFC6641B7520BC134 /* FractalClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractalClockView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		20CB5E0CC55A0AF8F0B5E972 /* FractalClock.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractalClock.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CB5E17D87E402E54EDD092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		20CB5ED3C8ABEC3C06D328D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };

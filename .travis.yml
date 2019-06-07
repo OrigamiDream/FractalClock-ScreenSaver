@@ -6,15 +6,15 @@ script:
   - xcodebuild -scheme FractalClock -sdk macosx -destination 'platform=macOS' build -derivedDataPath build
 
 before_deploy:
-  - echo "List files of travis_build_dir"
-  - ls $TRAVIS_BUILD_DIR
+  - cd build/Build/Products/Debug
+  - tar -zcf FractalClock.tar.gz FractalClock.saver
 
 deploy:
   provider: releases
   api_key:
     secure: sHhkii2klv+S31mCjj6XNcXXQhkJZPul7JOU0fWVP/Tn9kxMUVidR7Q/eRLPvRIc+39nluSeNEVeSiCq4xcJATena47QJgPh2I+jCt5oo8zYUyXXlV5RM5TPtZ3RZuuieaaIH+0uGoMKy3ZUYUeM2+FwUxnw5Nore+s5W6xdLVu52wcF8uXOfRgJqAuO/9X3Zez0zh6TZmy3r+q5rgnHByewJ2rc0LLITuC+ixLpSAPklP7QMEjlG69UcxOfObfRTi5402gbucjFp75wBqAEIHr8nad2VkgsoGKqczm2Cr2RhVgZvk1Rifa//an9mGbcLfDkikUnfC4vFjMkZKsj4siIx+lDItQrcT218TKx9ERjQ1IrgGLItHgyMK0cULmC7sMrHhJmTUjxDeV7NBB7yd4yGRQTSymngnzIbIJCcF8wEb1YrLuPKMlL6A8lNg65vOkeNBG4ougofd/cWkzENKuXxd44hmtoNQeU4zab5jIdQi3SxcsFxJvHA6yRDNiYvxxj9QqnHjZK3Jt07hWuGDqq+TgfSuWcAntkjHSqgo94AZwbMS+R+/mccjQOL0zfSSDGWCg8zbcfYGD813q0/O6JuYqoKc7g27eoLQPcyN/ibt+9ePrd3HVD6opkXprtjA5OJvgGO2sX42EB7P1S8LKKXY0sVkBG+RRW2YWdn/k=
   file_glob: true
-  file: build/Build/Products/Debug/FractalClock.saver
+  file: build/Build/Products/Debug/FractalClock.tar.gz
   skip_cleanup: true
   on:
     tags: true
