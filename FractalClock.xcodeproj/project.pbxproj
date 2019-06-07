@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		20CB52A88CB3B2A84F5E0B3E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 20CB5ED3C8ABEC3C06D328D5 /* .gitignore */; };
 		20CB5ADA2194068B47D04B57 /* FractalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB57DAFC6641B7520BC134 /* FractalClockView.swift */; };
+		20CB5FCAAEEF400536F4CFCF /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 20CB523685992D3E44CC8AF3 /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20CB523685992D3E44CC8AF3 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		20CB57DAFC6641B7520BC134 /* FractalClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FractalClockView.swift; sourceTree = "<group>"; };
 		20CB5E0CC55A0AF8F0B5E972 /* FractalClock.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractalClock.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CB5E17D87E402E54EDD092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 				20CB561D9772A8B122F384C9 /* Products */,
 				20CB5C1C42EB67B6DE7706BD /* FractalClock */,
 				20CB5ED3C8ABEC3C06D328D5 /* .gitignore */,
+				20CB523685992D3E44CC8AF3 /* .travis.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CB52A88CB3B2A84F5E0B3E /* .gitignore in Resources */,
+				20CB5FCAAEEF400536F4CFCF /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
