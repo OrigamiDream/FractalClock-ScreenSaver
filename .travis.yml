@@ -1,6 +1,8 @@
 os: osx
 osx_image: xcode10
 
+language: swift
+
 before_deploy:
   - echo "List files of travis_build_dir"
   - ls $TRAVIS_BUILD_DIR
