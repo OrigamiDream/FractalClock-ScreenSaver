@@ -1,10 +1,9 @@
-os: osx
+language: swift
+
 osx_image: xcode10.2
 
-language: objective-c
-
-xcode_project: FractalClock.xcodeproj
-xcode_destination: platform=macOS
+script:
+  - xcodebuild -scheme FractalClock -sdk macosx -destination 'platform=macOS' build
 
 before_deploy:
   - echo "List files of travis_build_dir"
