@@ -37,7 +37,7 @@ class FractalClockView: ScreenSaverView {
 
     func createHand(_ time: Int, _ radius: Int) -> (CGFloat, CGFloat) {
         let angle: Double = 2 * .pi * Double(time) / SECONDS_PER_MINUTE
-        return (CGFloat(cos(angle) * Double(radius)), CGFloat(sin(angle) * Double(radius)));
+        return (CGFloat(cos(angle) * Double(radius)), CGFloat(sin(angle) * Double(radius)))
     }
 
     func drawFractal(_ previousGradient: Int, _ seconds: Int, _ minutes: Int, _ centerX: CGFloat, _ centerY: CGFloat, _ depth: Int, _ previousLength: Double) {
@@ -64,8 +64,8 @@ class FractalClockView: ScreenSaverView {
             return
         }
 
-        drawFractal(previousGradient + minutes, seconds, minutes, centerX + minuteHand.0, centerY + minuteHand.1, depth + 1, length);
-        drawFractal(previousGradient + seconds, seconds, minutes, centerX + secondHand.0, centerY + secondHand.1, depth + 1, length);
+        drawFractal(previousGradient + minutes, seconds, minutes, centerX + minuteHand.0, centerY + minuteHand.1, depth + 1, length)
+        drawFractal(previousGradient + seconds, seconds, minutes, centerX + secondHand.0, centerY + secondHand.1, depth + 1, length)
     }
     
     private func drawLine(_ thickness: CGFloat, _ fromX: CGFloat, _ fromY: CGFloat, _ toX: CGFloat, _ toY: CGFloat) {
@@ -83,16 +83,16 @@ class FractalClockView: ScreenSaverView {
         backgroundColor.setFill()
         NSBezierPath.fill(bounds)
         
-        let centerX = bounds.midX;
-        let centerY = bounds.midY;
+        let centerX = bounds.midX
+        let centerY = bounds.midY
         
         let components = NSCalendar.current.dateComponents([ .hour, .minute, .second, .nanosecond ], from: Date())
-        let hours = Double(components.hour ?? 0);
-        let minutes = Double(components.minute ?? 0);
-        let seconds = Double(components.second ?? 0);
-        let milliseconds = Double((components.nanosecond ?? 0) / 1000000);
+        let hours = Double(components.hour ?? 0)
+        let minutes = Double(components.minute ?? 0)
+        let seconds = Double(components.second ?? 0)
+        let milliseconds = Double((components.nanosecond ?? 0) / 1000000)
         
-        let combined = minutes * 6000 + seconds * 100 + milliseconds / 10;
+        let combined = minutes * 6000 + seconds * 100 + milliseconds / 10
         
         drawHourHand(hours, minutes, seconds)
         drawFractal(0, Int(combined), Int(combined / 60), centerX, centerY, 0, SECOND_HAND_LENGTH)
@@ -104,7 +104,7 @@ class FractalClockView: ScreenSaverView {
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
         
         let clockWidth = CGFloat(CLOCK_CASE_RADIUS)
-        let textRadius = clockWidth;
+        let textRadius = clockWidth
         let font = NSFont(name: "HelveticaNeue-Light", size: 50)!
         
         for i in 0..<12 {
@@ -128,8 +128,8 @@ class FractalClockView: ScreenSaverView {
     }
     
     private func drawHourHand(_ hours: Double, _ minutes: Double, _ seconds: Double) {
-        let timing = seconds + minutes * 60.0 + hours * 60 * 60;
-        let minutesPerDay = 60.0 * 60.0 * 12.0;
+        let timing = seconds + minutes * 60.0 + hours * 60 * 60
+        let minutesPerDay = 60.0 * 60.0 * 12.0
         
         let progress = Double(timing) / minutesPerDay
         let angle = CGFloat(-(progress * .pi * 2) + .pi / 2)
