@@ -10,10 +10,12 @@ class FractalClockView: ScreenSaverView {
 
     public var MAX_FRACTAL_DEPTH = 10
     public var SECONDS_PER_MINUTE = 6000.0
-    public var CLOCK_CASE_RADIUS = 400
-    public var SECOND_HAND_LENGTH = 370.0
-    public var INDICATOR_DISTANCE = 425
-    public var DIVISION_DISTANCE = 390
+    
+    public let CLOCK_CASE_RADIUS_RATIO: CGFloat = 0.7
+    public let SECOND_HAND_LENGTH_RATIO: CGFloat = 0.65
+    public let INDICATOR_DISTANCE_RATIO: CGFloat = 0.75
+    public let DIVISION_DISTANCE_RATIO: CGFloat = 0.65
+    public let FONT_SIZE_RATIO: CGFloat = 0.06
     
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
@@ -95,7 +97,7 @@ class FractalClockView: ScreenSaverView {
         let combined = minutes * 6000 + seconds * 100 + milliseconds / 10
         
         drawHourHand(hours, minutes, seconds)
-        drawFractal(0, Int(combined), Int(combined / 60), centerX, centerY, 0, SECOND_HAND_LENGTH)
+        drawFractal(0, Int(combined), Int(combined / 60), centerX, centerY, 0, Double(SECOND_HAND_LENGTH_RATIO * (bounds.height / 2)))
         drawNumberFace()
         drawDivision()
     }
@@ -103,9 +105,9 @@ class FractalClockView: ScreenSaverView {
     private func drawNumberFace() {
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
         
-        let clockWidth = CGFloat(CLOCK_CASE_RADIUS)
+        let clockWidth = CLOCK_CASE_RADIUS_RATIO * (bounds.height / 2)
         let textRadius = clockWidth
-        let font = NSFont(name: "HelveticaNeue-Light", size: 50)!
+        let font = NSFont(name: "HelveticaNeue-Light", size: bounds.height / 2 * FONT_SIZE_RATIO)!
         
         for i in 0..<12 {
             let string = NSAttributedString(string: "\(12 - i)", attributes: [
@@ -139,7 +141,7 @@ class FractalClockView: ScreenSaverView {
         
         let path = NSBezierPath()
         path.move(to: CGPoint(x: bounds.midX, y: bounds.midY))
-        path.line(to: CGPoint(x: bounds.midX + cos(angle) * CGFloat(SECOND_HAND_LENGTH * 0.7), y: bounds.midY + sin(angle) * CGFloat(SECOND_HAND_LENGTH * 0.7)))
+        path.line(to: CGPoint(x: bounds.midX + cos(angle) * CGFloat(SECOND_HAND_LENGTH_RATIO * (bounds.height / 2) * 0.7), y: bounds.midY + sin(angle) * CGFloat(SECOND_HAND_LENGTH_RATIO * (bounds.height / 2) * 0.7)))
         path.lineWidth = 5.0
         path.stroke()
     }
@@ -157,13 +159,13 @@ class FractalClockView: ScreenSaverView {
             
             let path = NSBezierPath()
             path.move(to: CGPoint(
-                x: center.x + cos(angle) * CGFloat(INDICATOR_DISTANCE + 10),
-                y: center.y + sin(angle) * CGFloat(INDICATOR_DISTANCE + 10)
+                x: center.x + cos(angle) * CGFloat(INDICATOR_DISTANCE_RATIO * (bounds.height / 2) + 10),
+                y: center.y + sin(angle) * CGFloat(INDICATOR_DISTANCE_RATIO * (bounds.height / 2) + 10)
             ))
             
             path.line(to: CGPoint(
-                x: center.x + cos(angle) * CGFloat(CLOCK_CASE_RADIUS + (isMajor ? 10 : 5)),
-                y: center.y + sin(angle) * CGFloat(CLOCK_CASE_RADIUS + (isMajor ? 10 : 5))
+                x: center.x + cos(angle) * CGFloat(CLOCK_CASE_RADIUS_RATIO * (bounds.height / 2) + (isMajor ? 10 : 5)),
+                y: center.y + sin(angle) * CGFloat(CLOCK_CASE_RADIUS_RATIO * (bounds.height / 2) + (isMajor ? 10 : 5))
             ))
             
             path.lineWidth = isMajor ? 5.0 : 2.5
